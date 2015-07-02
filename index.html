@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height" />
+        <link rel="stylesheet" href="css/style.css" charset="utf-8">
+        <title>Reeport</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="bower_components/handlebars/handlebars.min.js" charset="utf-8"></script>
+        <script src="bower_components/page-slider/lib/page-slider.min.js" charset="utf-8"></script>
+        <script src="js/oauth/facebook.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/core.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/login.js"></script>
+        <script>
+        window.onload = function(){
+            if(navigator.geolocation)
+                navigator.geolocation.getCurrentPosition(handleGetCurrentPosition, onError);
+        }
+
+        function handleGetCurrentPosition(location){
+            localStorage.setItem('latitude', location.coords.latitude);
+            localStorage.setItem('longitude', location.coords.longitude);
+        }
+        
+        function onError() {
+            console.log('Geolocation disabled');
+        }
+    </script>
+        
+    </body>
+</html>
+
+<script id="start" type="text/x-handlebars-template">
+    <div class="this_page" id="page_start">
+    <section class="header">
+        <img src="img/logo.png" class="logo" />
+        <img src="img/hero_copy.png" class="hero_copy" />
+    </section>
+    <section class="registro">
+        <img src="img/registro.png" class="registro">
+
+        <!-- facebook login -->
+        <div class="social_login_btn facebook" id="f-login">
+            <div class="btn">
+                <img src="img/facebook_button.png" />
+                <div class="copy">Ingreso con Facebook</div>
+            </div>
+        </div>
+
+        <!-- twitter login -->
+        <div class="social_login_btn twitter">
+            <a href="/oauth/twitter/auth/">
+                <div class="btn">
+                    <img src="img/twitter_button.png" />
+                    <div class="copy">Ingreso con Twitter</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="separator">
+            <span>
+                o ingresa con tu correo electrónico
+            </span>
+        </div>
+
+        <!-- email login -->
+        <div class="social_login_btn correo">
+            <div class="btn">
+                <img src="img/email_button.png" />
+                <div class="copy">Ingreso con Correo</div>
+            </div>
+        </div>
+
+        <p>Ya tienes una cuenta? <a href="#login">Ingresa.</a></p>
+
+    </section>
+</div>  
+</script>
+
+<script id="signup" type="text/x-handlebars-template">
+    <div class="this_page" id="page_signup">
+    <form id="form-signup">
+        <section class="header">
+            <a href="#back" class="back_button"><img src="img/back_chevron.png" /></a>
+            <img src="img/reeport_logo.png" class="topbar_logo" />
+        </section>
+        <section class="form">
+
+            <h2>Registro de Usuario</h2>
+
+            <label>Nombre:</label>
+            <input type="text" name="full_name" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Número de teléfono:</label>
+            <input type="number" name="phone" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Correo Electrónico:</label>
+            <input type="email" name="email" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Contraseña:</label>
+            <input type="password" name="password" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Repetir contraseña:</label>
+            <input type="password" name="repassword" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+        </section>
+        <section class="action_footer">
+            <button  type="submit">
+                Comenzar
+                <img src="img/next_chevron.png" alt="">
+            </button>
+        </section>
+    </form>
+</div>   
+</script>
+
+<script id="login" type="text/x-handlebars-template">
+    <div class="this_page" id="page_login">
+    <form id="form-login">
+        <section class="header">
+            <a href="#back" class="back_button"><img src="img/back_chevron.png" /></a>
+            <img src="img/reeport_logo.png" class="topbar_logo" />
+        </section>
+        <section class="form">
+            <h2>Inicio de Sesión</h2>
+
+            <label>Correo Electrónico:</label>
+            <input type="email" name="login" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Contraseña:</label>
+            <input type="password" name="password" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+        </section>
+        <section class="action_footer">
+            <button type="submit">
+                Comenzar
+                <img src="img/next_chevron.png" alt="">
+            </button>
+        </section>
+    </form>
+</div> 
+</script>
+
+<script id="reeport" type="text/x-handlebars-template">
+    <div class="this_page" id="page_reeport">
+    <section class="header">
+        <img src="img/reeport_logo.png" class="topbar_logo" />
+        <a href="#profile" class="profile_button"><img src="img/profile_icon.png" alt=""></a>
+    </section>
+    <section class="stats">
+        <div class="counter">
+            <a href="#my-feed" class="btn-my-feed">
+                <span class="number total-reportes">0</span>
+                <span class="label">Reportes</span>                
+            </a>
+        </div>
+        <div class="counter">
+            <span class="number total-puntaje">0</span>
+            <span class="label">Puntos</span>
+        </div>
+    </section>
+    <section class="reeport_action">
+        <form action="post" id="form-picture">
+            <div class="file-upload">
+                <div class="file-upload-input">
+                    <img src="img/reportar_action.png" class="reportar active">  
+                    <input id="picture" type="file" class="js-upload" data-to="http://reeport.desarrollo22.com/account/reports/upload/picture/" style="opacity: 0 !important;" data-callback="showTagForm" accept="image/*" capture="camera" />                                
+                    <a href="#my-feed" class="mis_reportes">Ver mis reportes</a>
+                </div>
+                <div class="file-upload-progress">
+                    <span class="active">                    
+                        <img src="img/loading.gif" alt="">
+                    </span>                                    
+                    <div class="progress-info">
+                        <span class="meter">Espera...</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>  
+</script>
+
+<script id="tag" type="text/x-handlebars-template">
+    <div class="this_page" id="page_tag">
+    <section class="header">
+        <a href="#back" class="back_button"><img src="img/back_chevron.png" /></a>
+        <img src="img/reeport_logo.png" class="topbar_logo" />
+        <a href="#profile" class="profile_button"><img src="img/profile_icon.png" alt=""></a>
+    </section>
+    <form id="form-report" method="post">        
+        
+        <section class="picture">
+            <div class="image" id="image-loaded" style="background-image: url('http://reeport.desarrollo22.com/th.php?src={{source}}&w=400');"></div>
+            <div class="blind"></div>
+            <a href="#reeport"><img src="img/trash.png" alt=""></a>
+            <img src="img/triangle.png" class="triangle" />
+        </section>
+        
+        <section class="form">
+            <h2>Etiquetar la foto</h2>
+            <label>Ubicación:</label>
+            <input type="text" name="location" class="required" value="{{ubicacion}}" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Placa:</label>
+            <input type="text" name="plate" class="required" value="{{placa}}" />
+            <i class="error">Este campo no puede estar vacio.</i>
+            
+            <input type="hidden" name="picture" value="{{source}}" />
+            <input type="hidden" name="user_id" value="{{user_id}}" />
+            
+        </section>
+        
+        <!--
+        <section class="social_share">
+            <label for="">Compartir</label>
+            <div class="share_buttons">
+                <div class="this_button {{#if facebook}}{{else}}f-connect{{/if}}">
+                    <img src="img/facebook_badge.png" alt="">
+                    <span>Facebook</span>
+                </div>
+                <div class="this_button {{#if facebook}}{{else}}t-connect{{/if}}">
+                    <img src="img/twitter_badge.png" alt="">
+                    <span>Twitter</span>
+                </div>
+            </div>
+        </section>
+        -->
+        
+        <section class="action_footer">
+            <button type="submit">
+                Reportar
+                <img src="img/next_chevron.png" alt="">
+            </button>
+        </section>
+        
+    </form>
+</div>
+  
+</script>
+
+<script id="thanks" type="text/x-handlebars-template">
+    <div class="this_page" id="page_thanks">
+    <section class="header">
+        <img src="img/reeport_logo.png" class="topbar_logo" />
+        <a href="#profile" class="profile_button"><img src="img/profile_icon.png" alt=""></a>
+    </section>
+    <section class="picture">
+        <div class="image" id="thanks-image" style="background-image: url('http://reeport.desarrollo22.com/th.php?src={{source}}&w=400');"></div>
+        <div class="blind"></div>
+        <img src="img/triangle.png" class="triangle" />
+    </section>
+    <section class="thanks">
+        <h2>Gracias por reportar</h2>
+        <p>
+            Tu reporte ha sido enviado y será procesado en breve...
+        </p>
+    </section>
+    <section class="social_share">
+        <label for="">Compartir</label>
+        <div class="share_buttons">
+            <div class="this_button social-link social-facebook" data-title="Reeport - Por una ciudad con menos infractores!!" data-description="He encotrado un nuevo infractor" data-link="http://reeport.desarrollo22.com/report/{{id}}" data-picture="http://reeport.desarrollo22.comimg/fb_share.jpg">
+                <img src="img/facebook_badge.png" alt="">
+                <span>Facebook</span>
+            </div>
+            <div class="this_button social-link social-twitter" data-description="He encontrado un nuevo infractor" data-link="http://reeport.desarrollo22.com/report/{{id}}">
+                <img src="img/twitter_badge.png" alt="">
+                <span>Twitter</span>
+            </div>
+        </div>
+    </section>
+    <section class="action_footer">
+        <button type="submit">
+            Continuar
+            <img src="img/next_chevron.png" alt="">
+        </button>
+    </section>
+</div>  
+</script>
+
+<script id="profile" type="text/x-handlebars-template">
+    <div class="this_page" id="page_profile">
+    <form id="form-profile" >
+        <section class="header">
+            <a href="#back" class="back_button"><img src="img/back_chevron.png" /></a>
+            <img src="img/reeport_logo.png" class="topbar_logo" />
+            <a href="#logout" class="logout">Cerrar Sesión</a>
+        </section>
+        <section class="stats">
+            <div class="counter">
+                <span class="number total-reportes">0</span>
+                <span class="label">Reportes</span>
+            </div>
+            <div class="counter">
+                <span class="number total-puntaje">0</span>
+                <span class="label">Puntos</span>
+            </div>
+        </section>
+        <section class="form">
+            <label>Nombre:</label>
+            <input type="text" name="full_name" class="required" />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Número de teléfono:</label>
+            <input type="number" name="phone" class="required"  />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Correo Electrónico:</label>
+            <input type="email" name="login" class="required"  />
+            <i class="error">Este campo no puede estar vacio.</i>
+
+            <label>Contraseña:</label>
+            <input type="password" name="password" />
+
+            <label>Repetir contraseña:</label>
+            <input type="password" name="repassword" />
+            <input type="hidden" name="id" />
+
+        </section>
+        <section class="action_footer">
+            <button  type="submit">
+                Guardar
+                <img src="img/next_chevron.png" alt="">
+            </button>
+        </section>
+    </form>
+</div>  
+</script>
+
+<script id="my-feed" type="text/x-handlebars-template">
+    <div class="this_page" id="my_feed">    
+    <section class="header">
+        <a href="#reeport" class="back_button"><img src="img/back_chevron.png" /></a>
+        <img src="img/reeport_logo.png" class="topbar_logo" />
+        <a href="#profile" class="profile_button"><img src="img/profile_icon.png" alt=""></a>
+    </section>
+    <section class="gallery" id="gallery-wall-container">
+        <ul id="gallery-wall">            
+            {{#if items}}
+            {{#each items}}
+            <li>
+                <div class="this_report">
+                    <div class="top">
+                        <span class="reportado_por">{{full_name}}</span>
+                        <span class="date" data-livestamp="{{formatDate timestamp 'timestamp'}}">{{timestamp}}</span>    
+                    </div>
+                    <img src="http://reeport.desarrollo22.com/th.php?src={{picture}}&h=400" alt="">
+                    <span class="address">{{location}}</span>
+                </div>                
+            </li>
+            {{/each}}
+            {{/if}}
+        </ul>
+    </section>
+</div>  
+</script>
+
+<script id="wall" type="text/x-handlebars-template">
+    {{#if items}}
+    {{#each items}}
+    <li>
+        <div class="this_report">
+            <div class="top">
+                <span class="reportado_por">{{full_name}}</span>
+                <span class="date" data-livestamp="{{formatDate timestamp 'timestamp'}}">{{timestamp}}</span>    
+            </div>
+            <img src="http://reeport.desarrollo22.com/th.php?src={{picture}}&h=400" alt="">
+            <span class="address">{{location}}</span>
+        </div>        
+    </li>
+    {{/each}}
+{{/if}}
+      
+</script>
+
+<script id="single" type="text/x-handlebars-template">
+    <div class="this_page" id="page_single">    
+    <section class="header">
+        <a href="#reeport" class="back_button"><img src="img/back_chevron.png" /></a>
+        <img src="img/reeport_logo.png" class="topbar_logo" />
+        <a href="#profile" class="profile_button"><img src="img/profile_icon.png" alt=""></a>
+    </section>
+    <section class="gallery" id="gallery-wall-container">
+        <ul id="gallery-wall">            
+            
+            <li>
+                <div class="this_report">
+                    <div class="top">
+                        <span class="reportado_por">{{full_name}}</span>
+                        <span class="date" data-livestamp="{{formatDate timestamp 'timestamp'}}">{{timestamp}}</span>    
+                    </div>
+                    <img src="http://reeport.desarrollo22.com/th.php?src={{picture}}&h=400" alt="">
+                    <span class="address">{{location}}</span>
+                </div>                
+            </li>
+            
+        </ul>
+    </section>
+</div>  
+</script>

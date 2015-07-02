@@ -1,0 +1,189 @@
+// mobile first
+@media only screen { 
+	#page_start{
+		section.header{
+			background-image: url('../img/start_bg.png');
+			background-size: cover;
+			height: 184px;
+			padding-top: 56px;
+			width: 100%;
+			float: left;
+
+			img{
+				display: block;
+				margin: 0 auto;
+				
+				&.logo{
+					width: 177px;
+					margin-bottom: 18px;
+					margin-left: calc(50% - 60px); 
+				}
+				&.hero_copy{
+					width: 212px;
+				}
+
+			}
+		}
+
+		section.registro{
+			width: 100%;
+			float: left;
+			padding-top:20px;
+			padding-bottom: 40px;
+			background-color: #fff;
+
+			.registro{
+				display: block;
+				width: 98px;
+				margin-left: calc(50% - 49px);
+				margin-bottom: 20px;
+			}
+
+			h2{
+				font-family: 'Rokkitt';
+				font-weight: 700;
+				color: #f0793f;
+				font-size: 2rem;
+				line-height: 2rem;
+				margin: 0;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+
+			.social_login_btn{
+				display: block;
+				width: 264px;
+				height: 43px;
+				margin-left: calc(50% - 132px);
+				position: relative;
+				background-color: #f60;
+				border-radius: .3rem;
+				margin-bottom: 20px;
+				cursor: pointer;
+				float: left;
+
+				.btn{
+					width: 264px;
+					height: 43px;
+					position: absolute;
+					top: -2px;
+					left: 0;
+					border-radius: .3rem;
+					background-color: #f90;
+
+					.copy{
+						width: 214px;
+						text-align: center;
+						font-family: 'LatoBold';
+						font-size: .9rem;
+						float: right;
+						border-left: 1px solid #f60;
+						line-height: .9rem;
+						padding-top: 8px;
+						padding-bottom: 7px;
+						margin-top: 7px;
+					}
+
+					img{
+						float: left;
+					}	
+				}
+
+				&.facebook{
+					background-color: #203D78;
+					.btn{
+						background-color: #3B589B;
+						img{
+							height: 29px;
+							margin-top: 8px;
+  							margin-left: 20px;
+						}
+
+						.copy{
+							color: #fff;
+							border-left: 1px solid #203D78;
+						}
+					}
+				}
+
+				&.twitter{
+					background-color: #4381BA;
+					.btn{
+						background-color: #5AABF5;
+						img{
+							height: 23px;
+							margin-top: 11px;
+  							margin-left: 14px;
+						}
+
+						.copy{
+							color: #fff;
+							border-left: 1px solid #4381BA;
+						}
+					}
+				}
+
+				&.correo{
+					background-color: #DAE6F0;
+					.btn{
+						background-color: #D4D5D9;
+						img{
+							height: 17px;
+							margin-top: 13px;
+  							margin-left: 14px;
+						}
+
+						.copy{
+							color: #5A6373;
+							border-left: 1px solid #C0C1C5;
+						}
+					}					
+				}
+			}
+
+			.separator{
+				width: 92%;
+				margin-left: 4%;
+				border-top: 1px solid #C2C2C4;
+				position: relative;
+				margin-bottom: 20px;
+				height: 20px;
+				margin-top: 20px;
+				float: left;
+
+				span{
+					display: block;
+					background-color: #fff; 
+					color: #C2C2C4;
+					text-transform: uppercase;
+					font-family: 'Lato';
+					font-size: .7rem;
+					float: left;
+					padding: 3px;
+					position: absolute;
+					top: -10px;
+					left: calc(50% - 120px); 
+				}
+			}
+
+			p{
+				display: block;
+				float: left;
+				width: 100%;
+				text-align: center;
+				font-family: 'Lato';
+				font-size: .8rem;
+				color: #c5c9ce;
+
+				a{
+					color: #f1834a;
+					text-decoration: none;	
+				}
+			}
+		}
+	}
+}
+
+
+// tablets up
+@media only screen and (min-width: 650px) { }

@@ -1,0 +1,21 @@
+@import 'fonts';
+@import 'normalize';
+
+// mobile first
+@media only screen { 
+	body{
+		background-color: #fff;
+	}
+	.wrapper{
+		display: block;
+		float: left;
+		width: 100%;
+	}
+}
+
+
+// tablets up
+@media only screen and (min-width: 650px) { }
+
+
+@import 'start', 'login', 'reeport', 'profile', 'tag', 'thanks', 'my_feed';

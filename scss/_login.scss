@@ -1,0 +1,156 @@
+// mobile first
+@media only screen { 
+	#page_login,#page_signup{
+		section.header{
+			display: block;
+			float: left;
+			width: 100%;
+			background-color: #232d3b;
+			border-top: 2px solid #EC7B2B;
+			border-bottom: 1px solid #A0A1A6;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			position: relative;
+			height: 41px;
+
+			.back_button{
+				display: block;
+				float: left;
+				height: 31px;
+				padding: 7px 14px 7px 7px;
+				margin-top: -4px;
+
+				img{
+					height: 16px;
+				}
+			}
+
+			.topbar_logo{
+				display: block;
+				float: left;
+				height: 27px;
+				position: absolute;
+				left: calc(50% - 51px);
+			}
+		}
+
+		section.form{
+			width: 100%;
+			float: left;
+			padding: 7px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+
+			h2{
+				font-family: 'Rokkitt';
+				font-weight: 700;
+				color: #f0793f;
+				font-size: 2rem;
+				line-height: 2rem;
+				margin: 0;
+				margin-bottom: 20px;
+			}
+
+			label{
+				color: #616975;
+				font-family: 'LatoBold';
+				font-size: .8rem;
+				text-transform: uppercase;
+				width: 100%;
+				float: left;
+				margin-bottom: 5px;
+			}
+
+			input[type="email"],input[type="password"],input[type="text"], input[type="number"] {
+				margin-bottom: 20px;
+				width: 100%;
+				float: left;
+				display: block;
+				border: 2px solid #C2C2C2;
+				border-radius: .3rem;
+				outline: none;
+				padding: 10px 7px;
+				-webkit-appearance: none;
+				color: #616975;
+				font-family: 'Lato';
+				font-size: 1rem;
+
+			}
+
+			i.error{
+				display: block;
+				float: left;
+				background-color: #f60;
+				width: 100%;
+				margin-top: -20px;
+				margin-bottom: 10px;
+				padding: 3px;
+				color: #fff;
+				font-family: 'Lato';
+				font-size: .8rem;
+				display: none;
+			}
+		}
+
+		section.action_footer{
+			width: 100%;
+			float: left;
+			bottom: 0;
+			padding: 7px 7px 20px 7px;
+
+			a, button[type="submit"]{
+				display: block;
+				float: left;
+				width: 100%;
+				background-color: #f0793f;
+				background-repeat: no-repeat;
+				height: 56px;
+				background-size: 320px 56px;
+				position: relative;
+				text-align: center;
+				font-family: 'Rokkitt';
+				font-weight: 700;
+				font-size: 1rem;
+				text-decoration: none;
+				color: #fff;
+				font-size: 1.6rem;
+				line-height: 1.6rem;
+				padding-top: 5px;
+				text-shadow: 1px 1px 2px rgba(255, 51, 20, 1);
+				border: none;
+				border-radius: .2rem;
+
+				img{
+					display: block;
+					float: right;
+					position: absolute;
+					right: 7px;
+					height: 21px;
+					top: 20px;
+				}
+			}
+			
+		}	
+	}
+}
+
+
+// tablets up
+@media only screen and (min-width: 550px) { 
+	#page_login,#page_signup{
+		section.form{
+			width: 450px !important;
+			margin-left: calc(50% - 225px);
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+			padding-bottom: 20px !important;
+			padding-top: 90px !important;
+		}
+
+		section.action_footer{
+			width: 200px !important;
+			margin-left: calc(50% - 225px);
+			position: relative !important;	
+		}
+	}
+}
