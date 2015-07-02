@@ -130,7 +130,12 @@ function uploadFile(f) {
                         }
                     } else {
                         alert((response.msg == undefined) ? 'Lo sentimos, pero no se ha podido guardar la fotografía' : response.msg) ;
-                        location.hash = '#reeport';
+						progress.find('.meter:first').html('100%');
+						progress.hide(50);
+						setTimeout(function() {
+						    container.find('.file-upload-input').show();
+						    container.find('.mis_reportes').show();
+						}, 500);
                         if(async) {
                             progress.addClass('alert');
                         }
